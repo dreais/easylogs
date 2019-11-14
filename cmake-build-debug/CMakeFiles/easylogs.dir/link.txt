@@ -1,0 +1,2 @@
+/usr/bin/ar qc libeasylogs.a  CMakeFiles/easylogs.dir/easylogs.c.o
+/usr/bin/ranlib libeasylogs.a
