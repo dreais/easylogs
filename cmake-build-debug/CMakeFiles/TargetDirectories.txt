@@ -1,3 +1,0 @@
-/mnt/e/CLionProject/easylogs/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/mnt/e/CLionProject/easylogs/cmake-build-debug/CMakeFiles/easylogs.dir
-/mnt/e/CLionProject/easylogs/cmake-build-debug/CMakeFiles/edit_cache.dir
