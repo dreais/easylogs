@@ -61,8 +61,11 @@ void output_logs_str(const char prefix[], const char str[], ...)
 	char type[4] = {'\0'};
 	int BUFF_MAX = 1024;
 	char *buffer = malloc(sizeof(char) * BUFF_MAX);
+	char *tmp_time;
 
-	fprintf(output, "%s", time_str(time(NULL)));
+	tmp_time = time_str(time(NULL));
+	fprintf(output, "%s", tmp_time);
+	free(tmp_time);
 	fprintf(output, "%s", prefix);
 	va_start(arg_list, str);
 	while (str[cursor]) {
@@ -106,13 +109,14 @@ void close_file(void)
 void get_log_file(void)
 {
 	char log_path[] = LOG_NAME;
+	char *tmp_time;
 
 	output = fopen(log_path, "w+");
 	if (output == NULL) {
 		fprintf(stderr, "%s could not be opened.\n", log_path);
 		return;
 	}
-	fprintf(output, "%s[INFO] Opening file to read/write, setting cursor at initial position.\n", time_str(time(NULL)));
-	fprintf(output, "%s[INFO] If you're reading this line, please don't mind it. Just some file opening :)\n", time_str(time(NULL)));
-	fprintf(output, "%s[INFO] Logfile named '%s' opened without issue\n", time_str(time(NULL)), log_path);
+	output_logs_str(PREFIX_INFO, "Opening file to read/write, setting cursor at initial position.\n");
+	output_logs_str(PREFIX_INFO, "If you're reading this line, please don't mind it. Just some file opening :)\n");
+	output_logs_str(PREFIX_INFO, "Logfile named '%s' opened without issue\n", log_path);
 }
